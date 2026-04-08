@@ -3177,8 +3177,8 @@
     },
     "api/1.0.0": {
       "type": "project",
-      "path": "../src/api/api.csproj",
-      "msbuildProject": "../src/api/api.csproj"
+      "path": "../src/Api/api.csproj",
+      "msbuildProject": "../src/Api/api.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -3227,8 +3227,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\veron\\Documents\\UIS\\Semester_4\\DAT240\\GitHub\\GithubActions_Test\\GitHubActions_testing\\BoardGameCafe\\src\\api\\api.csproj": {
-              "projectPath": "C:\\Users\\veron\\Documents\\UIS\\Semester_4\\DAT240\\GitHub\\GithubActions_Test\\GitHubActions_testing\\BoardGameCafe\\src\\api\\api.csproj"
+            "C:\\Users\\veron\\Documents\\UIS\\Semester_4\\DAT240\\GitHub\\GithubActions_Test\\GitHubActions_testing\\BoardGameCafe\\src\\Api\\api.csproj": {
+              "projectPath": "C:\\Users\\veron\\Documents\\UIS\\Semester_4\\DAT240\\GitHub\\GithubActions_Test\\GitHubActions_testing\\BoardGameCafe\\src\\Api\\api.csproj"
             }
           }
         }

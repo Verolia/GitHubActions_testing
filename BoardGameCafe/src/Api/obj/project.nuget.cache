@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8ZoB3I7HGas=",
+  "dgSpecHash": "EbJQV61zDUc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\veron\\Documents\\UIS\\Semester_4\\DAT240\\GitHub\\GithubActions_Test\\GitHubActions_testing\\BoardGameCafe\\src\\api\\api.csproj",
+  "projectFilePath": "C:\\Users\\veron\\Documents\\UIS\\Semester_4\\DAT240\\GitHub\\GithubActions_Test\\GitHubActions_testing\\BoardGameCafe\\src\\Api\\api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\veron\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",
     "C:\\Users\\veron\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.1\\fluentvalidation.aspnetcore.11.3.1.nupkg.sha512",
