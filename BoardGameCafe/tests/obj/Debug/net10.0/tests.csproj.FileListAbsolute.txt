@@ -201,3 +201,16 @@ C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\FinalAssignment\helikopete
 C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\FinalAssignment\helikopeter\BoardGameCafe\tests\obj\Debug\net10.0\tests.pdb
 C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\FinalAssignment\helikopeter\BoardGameCafe\tests\obj\Debug\net10.0\tests.genruntimeconfig.cache
 C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\FinalAssignment\helikopeter\BoardGameCafe\tests\obj\Debug\net10.0\ref\tests.dll
+C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\GithubActions_Test\GitHubActions_testing\BoardGameCafe\tests\bin\Debug\net10.0\.msCoverageSourceRootsMapping_tests
+C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\GithubActions_Test\GitHubActions_testing\BoardGameCafe\tests\bin\Debug\net10.0\CoverletSourceRootsMapping_tests
+C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\GithubActions_Test\GitHubActions_testing\BoardGameCafe\tests\obj\Debug\net10.0\tests.csproj.AssemblyReference.cache
+C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\GithubActions_Test\GitHubActions_testing\BoardGameCafe\tests\obj\Debug\net10.0\tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\GithubActions_Test\GitHubActions_testing\BoardGameCafe\tests\obj\Debug\net10.0\tests.gentestingplatformentrypointinputcache.cache
+C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\GithubActions_Test\GitHubActions_testing\BoardGameCafe\tests\obj\Debug\net10.0\tests.genautoregisteredextensionsinputcache.cache
+C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\GithubActions_Test\GitHubActions_testing\BoardGameCafe\tests\obj\Debug\net10.0\tests.AssemblyInfoInputs.cache
+C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\GithubActions_Test\GitHubActions_testing\BoardGameCafe\tests\obj\Debug\net10.0\tests.AssemblyInfo.cs
+C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\GithubActions_Test\GitHubActions_testing\BoardGameCafe\tests\obj\Debug\net10.0\tests.csproj.CoreCompileInputs.cache
+C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\GithubActions_Test\GitHubActions_testing\BoardGameCafe\tests\obj\Debug\net10.0\tests.sourcelink.json
+C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\GithubActions_Test\GitHubActions_testing\BoardGameCafe\tests\obj\Debug\net10.0\tests.dll
+C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\GithubActions_Test\GitHubActions_testing\BoardGameCafe\tests\obj\Debug\net10.0\refint\tests.dll
+C:\Users\veron\Documents\UIS\Semester_4\DAT240\GitHub\GithubActions_Test\GitHubActions_testing\BoardGameCafe\tests\obj\Debug\net10.0\tests.pdb

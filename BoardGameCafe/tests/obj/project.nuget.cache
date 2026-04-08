@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "S8ugLCIJ1pU=",
+  "dgSpecHash": "ptSbRQZEaIQ=",
   "success": true,
-  "projectFilePath": "C:\\Users\\veron\\Documents\\UIS\\Semester_4\\DAT240\\GitHub\\FinalAssignment\\helikopeter\\BoardGameCafe\\tests\\tests.csproj",
+  "projectFilePath": "C:\\Users\\veron\\Documents\\UIS\\Semester_4\\DAT240\\GitHub\\GithubActions_Test\\GitHubActions_testing\\BoardGameCafe\\tests\\tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\veron\\.nuget\\packages\\coverlet.collector\\6.0.4\\coverlet.collector.6.0.4.nupkg.sha512",
     "C:\\Users\\veron\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",
