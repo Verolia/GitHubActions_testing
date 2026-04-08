@@ -1,0 +1,53 @@
+
+services:
+  
+  db:
+    image: postgres:16
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: MainDB
+    ports:
+      - "5432:5432"
+    volumes:
+      - MainDbData:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+
+
+  backend:
+    build:
+      context: ./src/Api
+      dockerfile: Dockerfile
+    container_name: boardgamecafe-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__MainDbConnection=Host=db;Port=5432;Username=postgres;Password=postgres;Database=MainDB
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: boardgamecafe-frontend
+    ports:
+    - "5173:80"
+    depends_on:
+    - backend
+
+volumes:
+  MainDbData:
