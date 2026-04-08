@@ -173,3 +173,4 @@ public class RegisterUserCommandTests
         Assert.ThrowsAsync<ValidationException>(() =>
             _mediator.Send(command));
     }
+}
