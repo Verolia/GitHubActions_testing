@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-    build-and-test:
+    backend:
         runs-on: ubuntu-latest
 
         defaults:
@@ -13,7 +13,7 @@ jobs:
                 working-directory: BoardGameCafe
         
         steps:
-            - name: Check out repository
+            - name: Checkout repository
               uses: actions/checkout@v2
 
             - name: Set up .NET
@@ -21,11 +21,75 @@ jobs:
               with:
                   dotnet-version: 10.0.x
 
-            - name: Install dependencies
+            - name: Restore dependencies
               run: dotnet restore
                     
             - name: Build project
               run: dotnet build --no-restore --configuration Release
 
-            - name: Run tests
+            - name: Run backend tests
               run: dotnet test --no-build --configuration Release 
+
+    frontend:
+        runs-on: ubuntu-latest
+
+        defaults:
+            run:
+                working-directory: BoardGameCafe/frontend
+        
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v2
+              with:
+                  node-version: 20.x
+
+            - name: Install frontend dependencies
+              run: npm install
+            
+            - name: Build frontend
+              run: npm run build
+
+    integration:
+        runs-on: ubuntu-latest
+
+        defaults:
+            run:
+                working-directory: BoardGameCafe
+        needs: backend
+        services:
+          postgres:
+            image: postgres:latest
+            env:
+              POSTGRES_USER: postgres
+              POSTGRES_PASSWORD: password
+              POSTGRES_DB: testdb
+            ports:
+              - 5432:5432
+            options: >-
+              --health-cmd="pg_isready -U postgres"
+              --health-interval=10s
+              --health-timeout=5s
+              --health-retries=5
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: Set up .NET
+              uses: actions/setup-dotnet@v1
+              with:
+                  dotnet-version: 10.0.x
+
+            - name: Restore dependencies
+              run: dotnet restore
+                    
+            - name: Build project
+              run: dotnet build --no-restore --configuration Release
+
+            - name: Run integration tests
+              run: dotnet test --no-build --configuration Release
+              env: 
+                ConnectionStrings__MainDbConnection: "Host=localhost;Port=5432;Database=testdb;Username=postgres;Password=password"
