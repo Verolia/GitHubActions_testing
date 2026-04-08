@@ -5,7 +5,7 @@ If any of these fail, the pull request will not go through and you can not push 
 You get feedback on what the problem is, where it failed.  
 
 ## What actually happens: 
-A temporary virual machine is built, and this machine runs the different commands on our code: 
+A temporary virtual machine is built, and this machine runs the different commands on our code: 
 
 ###  Backend checks: 
 To ensure backend builds correctly, and all backend tests pass. 
