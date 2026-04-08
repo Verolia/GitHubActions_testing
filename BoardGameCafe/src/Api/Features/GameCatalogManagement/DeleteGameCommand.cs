@@ -2,7 +2,7 @@ using MediatR;
 using FluentValidation;
 using Api.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Api.Infrastructure.Persistence;
+using Api.Infrastructure.Persistence.GameCatalogManagement;
 using Api.Application.Dtos;
 
 namespace Api.Features.GameCatalogManagement;
@@ -18,9 +18,9 @@ public record DeleteGameCommand(Guid Id) : IRequest<Unit>;
 
 public class DeleteGameCommandHandler : IRequestHandler<DeleteGameCommand, Unit>
 {
-    private readonly MainDbContext _db;
+    private readonly GameCatalogManagementDbContext _db;
 
-    public DeleteGameCommandHandler(MainDbContext db)
+    public DeleteGameCommandHandler(GameCatalogManagementDbContext db)
     {
         _db = db;
     }

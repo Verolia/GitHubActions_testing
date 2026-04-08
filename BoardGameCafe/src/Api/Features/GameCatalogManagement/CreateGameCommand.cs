@@ -2,8 +2,8 @@ using MediatR;
 using FluentValidation;
 using Api.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Api.Infrastructure.Persistence;
 using Api.Application.Dtos;
+using Api.Infrastructure.Persistence.GameCatalogManagement;
 
 namespace Api.Features.GameCatalogManagement;
 
@@ -18,9 +18,9 @@ public record CreateGameCommand(GameCreateDto GameDTO) : IRequest<Game>;
 
 public class CreateGameCommandHandler : IRequestHandler<CreateGameCommand, Game>
 {
-    private readonly MainDbContext _db; // Injecting the DbContext to access the database
+    private readonly GameCatalogManagementDbContext _db; // Injecting the DbContext to access the database
 
-    public CreateGameCommandHandler(MainDbContext db) // Constructor to receive the DbContext through dependency injection
+    public CreateGameCommandHandler(GameCatalogManagementDbContext db) // Constructor to receive the DbContext through dependency injection
     {
         _db = db;
     }

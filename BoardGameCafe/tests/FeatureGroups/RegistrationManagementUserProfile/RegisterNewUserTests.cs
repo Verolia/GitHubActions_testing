@@ -15,7 +15,7 @@ namespace Tests;
 public class RegisterUserCommandTests
 {
     private IMediator _mediator = null!;
-    private MainDbContext _db = null!;
+    private AccountManagementDbContext _db = null!;
     private ServiceProvider _provider = null!;
 
     [SetUp]
@@ -24,7 +24,7 @@ public class RegisterUserCommandTests
         var services = new ServiceCollection();
 
         // EF Core InMemory DB
-        services.AddDbContext<MainDbContext>(options =>
+        services.AddDbContext<AccountManagementDbContext>(options =>
             options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
 
         services.AddLogging();
@@ -42,12 +42,12 @@ public class RegisterUserCommandTests
         _provider = services.BuildServiceProvider();
 
         _mediator = _provider.GetRequiredService<IMediator>();
-        _db = _provider.GetRequiredService<MainDbContext>();
+        _db = _provider.GetRequiredService<AccountManagementDbContext>();
 
         SeedTestData(_db);
     }
 
-    private void SeedTestData(MainDbContext db)
+    private void SeedTestData(AccountManagementDbContext db)
     {
         // Existing user to test duplicate email case
         db.Users.Add(new User(

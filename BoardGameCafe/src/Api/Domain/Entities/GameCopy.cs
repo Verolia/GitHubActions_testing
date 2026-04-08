@@ -4,8 +4,9 @@ using Api.Domain.Common;
 namespace Api.Domain.Entities;
 
 // GameCopy defines a specific instance of some Game as it is added by the Admin.
-public class GameCopy : Entity, IAggregateRoot
+public class GameCopy
 {
+    public Guid Id; // Primary key
     public Guid GameId {get; set;} // Reference to another aggregate
     private GameCopyStatus _status;
     public GameCopyStatus Status => _status;

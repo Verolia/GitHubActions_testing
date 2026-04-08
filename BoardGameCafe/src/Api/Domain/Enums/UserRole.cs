@@ -1,8 +1,8 @@
-namespace Api.Domain.Enums;
+// namespace Api.Domain.Enums;
 
-public enum UserRole
-{
-    Customer,
-    Steward,
-    Admin
-}
+// public enum UserRole
+// {
+//     Customer,
+//     Steward,
+//     Admin
+// }

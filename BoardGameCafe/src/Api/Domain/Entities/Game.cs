@@ -4,8 +4,9 @@ using Api.Domain.Enums;
 namespace Api.Domain.Entities;
 
 // Game defines a boardgame that is available for playing at the café
-public class Game : Entity, IAggregateRoot
+public class Game
 {
+    public Guid Id; // Primary key
     public string Title {get; set;} = "";
     public int MaxPlayers {get; set;} = 0;
     public int PlaytimeMin {get; set;} = 0;
