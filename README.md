@@ -17,7 +17,7 @@ A virual machine is built, and this machine runs the different commands on our c
 ## Frontend checks: 
 - Checkout repository: actions/checkout@v2
 - Set up Node.js: actions/setup-node@v2
-    - node-version: 18.x
+    - node-version: 20.x
 - Install frontend dependencies: npm install
 - Build frontend: npm run build
 
