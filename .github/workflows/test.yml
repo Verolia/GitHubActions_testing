@@ -48,6 +48,9 @@ jobs:
 
             - name: Install frontend dependencies
               run: npm install
+            
+            - name: Build frontend
+              run: npm run build
 
     integration:
         runs-on: ubuntu-latest
