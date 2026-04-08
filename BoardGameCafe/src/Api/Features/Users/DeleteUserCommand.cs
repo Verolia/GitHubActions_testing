@@ -3,6 +3,7 @@ using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Api.Infrastructure.Persistence;
 
+// This is a test for GitHub Actions. 
 
 namespace Api.Features.Users;
 
