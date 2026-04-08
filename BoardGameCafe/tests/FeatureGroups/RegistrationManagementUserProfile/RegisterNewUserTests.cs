@@ -160,4 +160,16 @@ public class RegisterUserCommandTests
         Assert.ThrowsAsync<ValidationException>(() =>
             _mediator.Send(command));
     }
-}
+
+    [Test]
+    // Test that registering with an existing email throws an exception
+    public void RegisterUserCommand_DuplicateEmail2()
+    {
+        var command = new RegisterUserCommand(
+            Name: "Jane Doe",
+            Email: "existing@test.com",
+            Password: "secret123"
+        );
+        Assert.ThrowsAsync<ValidationException>(() =>
+            _mediator.Send(command));
+    }
