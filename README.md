@@ -1,28 +1,33 @@
-# GitHubActions_testing
+# GitHub Actions
 
-Every time someone makes a new pull request to main (wants to pull/merge their branch into main), Github Actions workflow will run.
-If any of these fail, the pull request will not go through and you can not push the code to main. 
+Every time someone makes a new pull request to `main` (wants to pull/merge their branch into main), Github Actions workflow will run.
+If any of these fail, the pull request will not go through and you can not push the code to `main`. 
 You get feedback on what the problem is, where it failed.  
 
-A virual machine is built, and this machine runs the different commands on our code: 
+## What actually happens: 
+A temporary virual machine is built, and this machine runs the different commands on our code: 
 
-##  Backend checks: 
+###  Backend checks: 
+To ensure backend builds correctly, and all backend tests pass. 
+
 - Checkout repository: actions/checkout@v2
 - Set up .NET: actions/setup-dotnet@v1
     - dotnet-version: 10.0.x
-- Restore dependencies: 'dotnet restore'
-- Build project: dotnet build --no-restore --configuration Release
-- Run our tests: dotnet test --no-build --configuration Release 
+- Restore dependencies: `dotnet restore`
+- Build project: `dotnet build --no-restore --configuration Release`
+- Run our tests: `dotnet test --no-build --configuration Release`
 
-## Frontend checks: 
+### Frontend checks: 
+To ensure frontend builds correctly. 
+
 - Checkout repository: actions/checkout@v2
 - Set up Node.js: actions/setup-node@v2
     - node-version: 20.x
-- Install frontend dependencies: npm install
-- Build frontend: npm run build
+- Install frontend dependencies: `npm install`
+- Build frontend: `npm run build`
 
-## Integration checks: 
-To ensure that different parts of the project work together, not just individually. For our workflow, this includes the backend connecting to the database and running integration tests against it.
+### Integration checks: 
+To ensure that different parts of the project work together, not just individually. This means: backend connecting to the database and running integration tests against it.
 
 - Start temporary Postgres database
     - A PostgreSQL container is launched using GitHub Actions services.
@@ -36,5 +41,10 @@ To ensure that different parts of the project work together, not just individual
     - Tests verify that MainDbContext can connect, migrations are correct, and database queries work.
     - After tests finish, the database container is removed automatically.
 
-Note: this is not exactly the same as running Docker-Compose Up --build, because the GitHub Actions workflow doesn’t start all services at once like the local docker-compose setup will. Each job or service runs in isolation unless explicitly linked.
+## Note
+- This is not exactly the same as running Docker-Compose Up --build, because the GitHub Actions workflow doesn’t start all services at once like the local docker-compose setup will. Each job or service runs in isolation unless explicitly linked.
 The database created for integration tests is temporary and only exists for the duration of the workflow. It will be removed automatically after tests finish. The workflow focuses on build, tests, and basic integration, not on fully running the app stack. 
+
+Could be a good idea to check manually sometimes: 
+- docker-compose up --build 
+- manual full pipeline testing through browser
