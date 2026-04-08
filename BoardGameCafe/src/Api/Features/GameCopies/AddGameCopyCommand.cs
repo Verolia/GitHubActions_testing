@@ -2,7 +2,7 @@ using MediatR;
 using FluentValidation;
 using Api.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Api.Infrastructure.Persistence;
+using Api.Infrastructure.Persistence.GameCatalogManagement;
 
 namespace Api.Features.GameCopies;
 
@@ -10,9 +10,9 @@ public record AddGameCopyCommand(Guid GameId) : IRequest<GameCopy>; // Takes inn
 
 public class AddGameCopyCommandHandler : IRequestHandler<AddGameCopyCommand, GameCopy>
 {
-    private readonly MainDbContext _db; // Injecting the DbContext to access the database
+    private readonly GameCatalogManagementDbContext _db; // Injecting the DbContext to access the database
 
-    public AddGameCopyCommandHandler(MainDbContext db) // Constructor to receive the DbContext through dependency injection
+    public AddGameCopyCommandHandler(GameCatalogManagementDbContext db) // Constructor to receive the DbContext through dependency injection
     {
         _db = db;
     }

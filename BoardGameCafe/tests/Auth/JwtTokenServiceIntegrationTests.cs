@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using Api.Infrastructure.Auth;
-using Api.Infrastructure.Persistence;
+using Api.Infrastructure.Persistence.AccountManagement;
 using Api.Domain.Entities;
 using Api.Domain.Enums; 
 
@@ -17,7 +17,7 @@ namespace Tests.Auth
     public class JwtTokenServiceIntegrationTests
     {
         private ServiceProvider _provider = null!;
-        private MainDbContext _dbContext = null!;
+        private AccountManagementDbContext _dbContext = null!;
         private JwtTokenService _jwtTokenService = null!;
 
         [SetUp]
@@ -38,12 +38,12 @@ namespace Tests.Auth
             var services = new ServiceCollection();
 
             services.AddSingleton<IConfiguration>(configuration);
-            services.AddDbContext<MainDbContext>(options =>
+            services.AddDbContext<AccountManagementDbContext>(options =>
                 options.UseInMemoryDatabase("TestDb"));
             services.AddTransient<JwtTokenService>();
 
             _provider = services.BuildServiceProvider();
-            _dbContext = _provider.GetRequiredService<MainDbContext>();
+            _dbContext = _provider.GetRequiredService<AccountManagementDbContext>();
             _jwtTokenService = _provider.GetRequiredService<JwtTokenService>();
         }
 

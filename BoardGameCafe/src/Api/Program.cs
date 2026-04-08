@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Api.Infrastructure.Persistence;
 using MediatR;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -10,13 +9,47 @@ using Api.Infrastructure.Auth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Api.Features.AccountManagementContext.Shared.Services;
+using Api.Infrastructure.Persistence.AccountManagement;
+using Api.Infrastructure.Persistence.GameCatalogManagement;
+using Api.Infrastructure.Persistence.CafeFloorManagement;
+using Api.Infrastructure.Persistence.ContentAndPromotions;
+using Api.Infrastructure.Persistence.EconomyManagement;
+using Api.Infrastructure.Persistence.Notifications;
+using Api.Infrastructure.Persistence.Report;
+using Api.Infrastructure.Persistence.ReservationManagement;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // ------------------------------------------------------
 // Add DbContext (PostgreSQL)
+// Needs one service registration per DbContext, even if they use the same connection string
 // ------------------------------------------------------
-builder.Services.AddDbContext<MainDbContext>(options =>
+
+// DbContexts for MainDb Database
+builder.Services.AddDbContext<AccountManagementDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("MainDbConnection"))
+
+);builder.Services.AddDbContext<CafeFloorManagementDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("MainDbConnection"))
+
+);builder.Services.AddDbContext<ContentAndPromotionsDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("MainDbConnection"))
+
+);builder.Services.AddDbContext<EconomyManagementDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("MainDbConnection"))
+
+);builder.Services.AddDbContext<GameCatalogManagementDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("MainDbConnection"))
+
+);builder.Services.AddDbContext<NotificationsDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("MainDbConnection"))
+
+);builder.Services.AddDbContext<ReportDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("MainDbConnection"))
+
+);builder.Services.AddDbContext<ReservationManagementDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("MainDbConnection"))
 );
 
@@ -103,6 +136,7 @@ else
     });
 
     builder.Services.AddScoped<JwtTokenService>();
+    builder.Services.AddScoped<LoginService>();
 }
 
 builder.Services.AddAuthorization();
@@ -115,11 +149,39 @@ var app = builder.Build();
 // ------------------------------------------------------
 // Apply migrations automatically (optional but great in dev)
 // ------------------------------------------------------
+
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<MainDbContext>();
-    db.Database.Migrate();
+    var services = scope.ServiceProvider;
+
+    // Needs one service per DbContext
+
+    // DbContexts for MainDb Database
+    services.GetRequiredService<AccountManagementDbContext>()
+        .Database.Migrate();
+
+    services.GetRequiredService<CafeFloorManagementDbContext>()
+        .Database.Migrate();
+
+    services.GetRequiredService<ContentAndPromotionsDbContext>()
+    .Database.Migrate();
+
+    services.GetRequiredService<EconomyManagementDbContext>()
+    .Database.Migrate();
+
+    services.GetRequiredService<GameCatalogManagementDbContext>()
+        .Database.Migrate();
+
+    services.GetRequiredService<NotificationsDbContext>()
+        .Database.Migrate();
+
+    services.GetRequiredService<ReportDbContext>()
+        .Database.Migrate();
+
+    services.GetRequiredService<ReservationManagementDbContext>()
+        .Database.Migrate();
 }
+
 
 // ------------------------------------------------------
 // Middleware pipeline

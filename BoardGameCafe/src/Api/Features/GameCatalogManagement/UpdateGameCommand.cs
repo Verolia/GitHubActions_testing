@@ -2,7 +2,7 @@ using MediatR;
 using FluentValidation;
 using Api.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Api.Infrastructure.Persistence;
+using Api.Infrastructure.Persistence.GameCatalogManagement;
 using Api.Application.Dtos;
 
 namespace Api.Features.GameCatalogManagement;
@@ -17,9 +17,9 @@ public record UpdateGameCommand(GameUpdateDto GameDTO) : IRequest<Unit>;
 
 public class UpdateGameCommandHandler : IRequestHandler<UpdateGameCommand, Unit>
 {
-    private readonly MainDbContext _db;
+    private readonly GameCatalogManagementDbContext _db;
 
-    public UpdateGameCommandHandler(MainDbContext db)
+    public UpdateGameCommandHandler(GameCatalogManagementDbContext db)
     {
         _db = db;
     }

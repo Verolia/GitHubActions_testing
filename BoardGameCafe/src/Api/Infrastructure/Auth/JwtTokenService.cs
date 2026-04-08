@@ -1,7 +1,7 @@
+using Api.Features.AccountManagementContext.Shared.DTOs;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Api.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
@@ -16,7 +16,7 @@ public class JwtTokenService
         _config = config;
     }
 
-    public string GenerateToken(User user)
+    public string GenerateToken(TokenRequest request)
     {
         var key = _config["Jwt:Key"];
         var issuer = _config["Jwt:Issuer"];
@@ -25,9 +25,9 @@ public class JwtTokenService
 
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new Claim(ClaimTypes.Name, user.EmailAddress),
-            new Claim(ClaimTypes.Role, user.Role.ToString())
+            new Claim(ClaimTypes.NameIdentifier, request.UserId.ToString()),
+            new Claim(ClaimTypes.Name, request.EmailAddress),
+            new Claim(ClaimTypes.Role, request.Role)
         };
 
         var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key!));

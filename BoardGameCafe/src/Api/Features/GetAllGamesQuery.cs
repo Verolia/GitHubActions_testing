@@ -1,7 +1,7 @@
 using MediatR;
 using Api.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Api.Infrastructure.Persistence;
+using Api.Infrastructure.Persistence.GameCatalogManagement;
 using Api.Application.Dtos;
 
 namespace Api.Features;
@@ -13,10 +13,10 @@ public sealed class GetAllGamesHandler : IRequestHandler<GetAllGamesQuery, List<
 
     // “These two lines below let your feature code use the database. 
     // They don’t create the database connection — 
-    // they just take the already-prepared MainDbContext and 
+    // they just take the already-prepared GameCatalogManagementDbContext and 
     // store it in _db so you can run queries with it.”
-    private readonly MainDbContext _db;
-    public GetAllGamesHandler(MainDbContext db) => _db = db;
+    private readonly GameCatalogManagementDbContext _db;
+    public GetAllGamesHandler(GameCatalogManagementDbContext db) => _db = db;
   
     public async Task<List<GameDto>> Handle(GetAllGamesQuery q, CancellationToken ct)
     {

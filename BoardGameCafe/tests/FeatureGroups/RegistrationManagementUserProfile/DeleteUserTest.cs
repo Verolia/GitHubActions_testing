@@ -14,7 +14,7 @@ namespace Tests;
 public class DeleteUserCommandTests
 {
     private IMediator _mediator = null!;
-    private MainDbContext _db = null!;
+    private AccountManagementDbContext _db = null!;
     private ServiceProvider _provider = null!;
 
     [SetUp]
@@ -23,7 +23,7 @@ public class DeleteUserCommandTests
         var services = new ServiceCollection();
 
         // EF Core InMemory database
-        services.AddDbContext<MainDbContext>(options =>
+        services.AddDbContext<AccountManagementDbContext>(options =>
             options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
 
         // Logging
@@ -42,14 +42,14 @@ public class DeleteUserCommandTests
         _provider = services.BuildServiceProvider();
 
         _mediator = _provider.GetRequiredService<IMediator>();
-        _db = _provider.GetRequiredService<MainDbContext>();
+        _db = _provider.GetRequiredService<AccountManagementDbContext>();
 
         SeedTestData(_db);
     }
 
     private Guid _existingUserId;
 
-    private void SeedTestData(MainDbContext db)
+    private void SeedTestData(AccountManagementDbContext db)
     {
         var user = new User(
             name: "Delete Me",
