@@ -3188,11 +3188,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\veron\\Documents\\UIS\\Semester_4\\DAT240\\GitHub\\FinalAssignment\\helikopeter\\BoardGameCafe\\src\\api\\api.csproj",
+      "projectUniqueName": "C:\\Users\\veron\\Documents\\UIS\\Semester_4\\DAT240\\GitHub\\GithubActions_Test\\GitHubActions_testing\\BoardGameCafe\\src\\api\\api.csproj",
       "projectName": "api",
-      "projectPath": "C:\\Users\\veron\\Documents\\UIS\\Semester_4\\DAT240\\GitHub\\FinalAssignment\\helikopeter\\BoardGameCafe\\src\\api\\api.csproj",
+      "projectPath": "C:\\Users\\veron\\Documents\\UIS\\Semester_4\\DAT240\\GitHub\\GithubActions_Test\\GitHubActions_testing\\BoardGameCafe\\src\\api\\api.csproj",
       "packagesPath": "C:\\Users\\veron\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\veron\\Documents\\UIS\\Semester_4\\DAT240\\GitHub\\FinalAssignment\\helikopeter\\BoardGameCafe\\src\\api\\obj\\",
+      "outputPath": "C:\\Users\\veron\\Documents\\UIS\\Semester_4\\DAT240\\GitHub\\GithubActions_Test\\GitHubActions_testing\\BoardGameCafe\\src\\api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
