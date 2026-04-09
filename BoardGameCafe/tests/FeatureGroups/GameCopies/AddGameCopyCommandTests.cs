@@ -2,7 +2,7 @@ using NUnit.Framework;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using MediatR;
-using Api.Infrastructure.Persistence;
+using Api.Infrastructure.Persistence.GameCatalogManagement;
 using Api.Features.GameCopies;
 using Api.Domain.Entities;
 using FluentValidation;
@@ -13,7 +13,7 @@ namespace Tests;
 public class AddGameCopyCommandTests
 {
     private IMediator _mediator = null!;
-    private MainDbContext _db = null!;
+    private GameCatalogManagementDbContext _db = null!;
     private ServiceProvider _provider = null!;
 
     [SetUp]
@@ -22,7 +22,7 @@ public class AddGameCopyCommandTests
         var services = new ServiceCollection();
 
         // Use EF Core InMemory database
-        services.AddDbContext<MainDbContext>(options =>
+        services.AddDbContext<GameCatalogManagementDbContext>(options =>
             options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
 
         // Adds logging
@@ -44,13 +44,13 @@ public class AddGameCopyCommandTests
         
 
         _mediator = _provider.GetRequiredService<IMediator>();
-        _db = _provider.GetRequiredService<MainDbContext>();
+        _db = _provider.GetRequiredService<GameCatalogManagementDbContext>();
 
         // Seed required data directly into the InMemory DB
         SeedTestData(_db);
     }
 
-    private void SeedTestData(MainDbContext db)
+    private void SeedTestData(GameCatalogManagementDbContext db)
     {
         db.Games.Add(new Game
         {

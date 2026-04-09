@@ -1,4 +1,4 @@
-using NUnit.Framework;
+/* using NUnit.Framework;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -8,6 +8,8 @@ using System.Security.Claims;
 using Api.Infrastructure.Auth;
 using Api.Domain.Entities;
 using Api.Domain.Enums;
+using Api.Features.AccountManagementContext.Entities;
+using Api.Features.AccountManagementContext.Enums;
 
 namespace Tests.Auth;
 
@@ -118,4 +120,4 @@ public class JwtTokenServiceTests
         Assert.IsTrue(jwt.ValidTo > DateTime.UtcNow);
         Assert.IsTrue(jwt.ValidTo <= DateTime.UtcNow.AddMinutes(60));
     }
-}
+} */

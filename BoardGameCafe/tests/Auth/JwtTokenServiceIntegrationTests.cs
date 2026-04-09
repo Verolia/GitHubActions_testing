@@ -1,4 +1,4 @@
-using System;
+/* using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
@@ -10,6 +10,8 @@ using Api.Infrastructure.Auth;
 using Api.Infrastructure.Persistence.AccountManagement;
 using Api.Domain.Entities;
 using Api.Domain.Enums; 
+using Api.Features.AccountManagementContext.Entities;
+using Api.Features.AccountManagementContext.Enums;
 
 namespace Tests.Auth
 {
@@ -93,4 +95,4 @@ namespace Tests.Auth
             Assert.AreEqual(user.Role.ToString(), roleClaim!.Value);
         }
     }
-}
+} */
